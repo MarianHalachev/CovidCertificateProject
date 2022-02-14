@@ -1,0 +1,78 @@
+﻿@model CovidCertificate.Data.Models.School
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<h4>School</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <h4 class="text-center">TypeOfSchool</h4>
+            <hr class="hr-2 bg-dark half-width mt-4" />
+            <div class="product-type-holder mt-4 d-flex justify-content-around">
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="EarlychildhoodEducation" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">EarlychildhoodEducation</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="PreSchool" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">PreSchool</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="PrimaryEducation" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">PrimaryEducation</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="PrimarySchool" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">PrimarySchool</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="ElementarySchool" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">ElementarySchool</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="MiddleSchool" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">MiddleSchool</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="SecondaryEducation" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">SecondaryEducation</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="SecondarySchool" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">SecondarySchool</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="HighSchool" class="form-check-input" />
+                    <label asp-for="TypeOfSchool" class="form-check-label">HighSchool</label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
