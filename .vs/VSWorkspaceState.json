@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CovidCertificate",
+    "\\CovidCertificate\\Views",
+    "\\CovidCertificate\\Views\\Teachers"
   ],
-  "SelectedNode": "\\CovidCertificate.sln",
+  "SelectedNode": "\\CovidCertificate\\Views\\Teachers\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }
