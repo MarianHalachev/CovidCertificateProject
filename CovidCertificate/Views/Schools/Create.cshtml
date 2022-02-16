@@ -4,62 +4,36 @@
     ViewData["Title"] = "Create";
 }
 
+<h2>Create</h2>
 
-<h1>Add School</h1>
-<form class="mx-auto half-width" method="post" asp-action="Create">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" placeholder="Name..." />
+<h4>School</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodeByAdmin" class="control-label"></label>
+                <input asp-for="CodeByAdmin" class="form-control" />
+                <span asp-validation-for="CodeByAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="Location"></label>
-        <input asp-for="Location" class="form-control" placeholder="Location..." />
-    </div>
-    <h4 class="text-center">TypeOfSchool</h4>
-    <hr class="hr-2 bg-dark half-width mt-4" />
-    <div class="product-type-holder mt-4 d-flex justify-content-around">
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value=" EarlychildhoodEducation" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">EarlychildhoodEducation</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="PreSchool" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">PreSchool</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="PrimaryEducation" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">PrimaryEducation</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="PrimarySchool" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">PrimarySchool</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="ElementarySchool" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">ElementarySchool</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="MiddleSchool" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">MiddleSchool</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="SecondaryEducation" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">SecondaryEducation</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="SecondarySchool" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">SecondarySchool</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input asp-for="TypeOfSchool" type="radio" name="TypeOfSchool" value="HighSchool" class="form-check-input" />
-            <label asp-for="TypeOfSchool" class="form-check-label">HighSchool</label>
-        </div>
-        <hr class="hr-2 bg-dark half-width mt-4" />
-        <div class="button-holder mt-2 d-flex justify-content-center">
-            <button type="submit" class="btn chushka-bg-color">Create</button>
-        </div>
-    </div>
-</form>
+</div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

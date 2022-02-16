@@ -22,82 +22,18 @@ namespace CovidCertificate.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Students",
+                name: "School",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    PersonalNumber = table.Column<int>(type: "int", nullable: false),
-                    Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateOfExpiry = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PlaceOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Residence = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Height = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ColorOfEyes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Grade = table.Column<int>(type: "int", nullable: false),
-                    NumberInClass = table.Column<int>(type: "int", nullable: false),
-                    Sex = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsValid = table.Column<bool>(type: "bit", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CodeByAdmin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Teachers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    PersonalNumber = table.Column<int>(type: "int", nullable: false),
-                    Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateOfExpiry = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PlaceOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Residence = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Height = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ColorOfEyes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Sex = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsValid = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Teachers", x => x.Id);
+                    table.PrimaryKey("PK_School", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,6 +55,42 @@ namespace CovidCertificate.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SchoolId = table.Column<int>(type: "int", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_School_SchoolId",
+                        column: x => x.SchoolId,
+                        principalTable: "School",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -207,37 +179,23 @@ namespace CovidCertificate.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "School",
+                name: "Certificate",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentId = table.Column<int>(type: "int", nullable: true),
-                    TeacherId = table.Column<int>(type: "int", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TypeOfSchool = table.Column<int>(type: "int", nullable: false)
+                    IssueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ValidMonths = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsValid = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_School", x => x.Id);
+                    table.PrimaryKey("PK_Certificate", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_School_AspNetUsers_UserId",
+                        name: "FK_Certificate_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_School_Students_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "Students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_School_Teachers_TeacherId",
-                        column: x => x.TeacherId,
-                        principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -275,6 +233,11 @@ namespace CovidCertificate.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_SchoolId",
+                table: "AspNetUsers",
+                column: "SchoolId");
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
@@ -282,18 +245,8 @@ namespace CovidCertificate.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_School_StudentId",
-                table: "School",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_School_TeacherId",
-                table: "School",
-                column: "TeacherId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_School_UserId",
-                table: "School",
+                name: "IX_Certificate_UserId",
+                table: "Certificate",
                 column: "UserId");
         }
 
@@ -315,7 +268,7 @@ namespace CovidCertificate.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "School");
+                name: "Certificate");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -324,10 +277,7 @@ namespace CovidCertificate.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Students");
-
-            migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "School");
         }
     }
 }

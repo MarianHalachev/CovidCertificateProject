@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CovidCertificate.Data;
 using CovidCertificate.Data.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace CovidCertificate.Controllers
 {
@@ -28,7 +26,6 @@ namespace CovidCertificate.Controllers
         }
 
         // GET: Schools/Details/5
-
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,10 +52,9 @@ namespace CovidCertificate.Controllers
         // POST: Schools/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Location,TypeOfSchool")] School school)
+        public async Task<IActionResult> Create([Bind("Id,Name,CodeByAdmin,Address")] School school)
         {
             if (ModelState.IsValid)
             {
@@ -88,10 +84,9 @@ namespace CovidCertificate.Controllers
         // POST: Schools/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Location,TypeOfSchool")] School school)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CodeByAdmin,Address")] School school)
         {
             if (id != school.Id)
             {
@@ -140,7 +135,6 @@ namespace CovidCertificate.Controllers
         }
 
         // POST: Schools/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

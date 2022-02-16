@@ -19,6 +19,32 @@ namespace CovidCertificate.Migrations
                 .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CovidCertificate.Data.Models.Certificate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsValid")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("IssueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ValidMonths")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Certificate");
+                });
+
             modelBuilder.Entity("CovidCertificate.Data.Models.School", b =>
                 {
                     b.Property<int>("Id")
@@ -26,147 +52,18 @@ namespace CovidCertificate.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Location")
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CodeByAdmin")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TypeOfSchool")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("School");
-                });
-
-            modelBuilder.Entity("CovidCertificate.Data.Models.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ColorOfEyes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfExpiry")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Grade")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Height")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("IsValid")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MiddleName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nationality")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NumberInClass")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonalNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PlaceOfBirth")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Residence")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sex")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("CovidCertificate.Data.Models.Teacher", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ColorOfEyes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfExpiry")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Height")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("IsValid")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MiddleName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nationality")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PersonalNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PlaceOfBirth")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Residence")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sex")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("CovidCertificate.Data.Models.User", b =>
@@ -181,6 +78,9 @@ namespace CovidCertificate.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -188,11 +88,20 @@ namespace CovidCertificate.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -210,6 +119,9 @@ namespace CovidCertificate.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("SchoolId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -230,6 +142,8 @@ namespace CovidCertificate.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("SchoolId");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -369,25 +283,22 @@ namespace CovidCertificate.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CovidCertificate.Data.Models.School", b =>
+            modelBuilder.Entity("CovidCertificate.Data.Models.Certificate", b =>
                 {
-                    b.HasOne("CovidCertificate.Data.Models.Student", "Student")
-                        .WithMany("Schools")
-                        .HasForeignKey("StudentId");
-
-                    b.HasOne("CovidCertificate.Data.Models.Teacher", "Teacher")
-                        .WithMany("Schools")
-                        .HasForeignKey("TeacherId");
-
                     b.HasOne("CovidCertificate.Data.Models.User", "User")
-                        .WithMany("Schools")
+                        .WithMany("Certificates")
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Student");
-
-                    b.Navigation("Teacher");
-
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CovidCertificate.Data.Models.User", b =>
+                {
+                    b.HasOne("CovidCertificate.Data.Models.School", "School")
+                        .WithMany("Users")
+                        .HasForeignKey("SchoolId");
+
+                    b.Navigation("School");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -441,19 +352,14 @@ namespace CovidCertificate.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CovidCertificate.Data.Models.Student", b =>
+            modelBuilder.Entity("CovidCertificate.Data.Models.School", b =>
                 {
-                    b.Navigation("Schools");
-                });
-
-            modelBuilder.Entity("CovidCertificate.Data.Models.Teacher", b =>
-                {
-                    b.Navigation("Schools");
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("CovidCertificate.Data.Models.User", b =>
                 {
-                    b.Navigation("Schools");
+                    b.Navigation("Certificates");
                 });
 #pragma warning restore 612, 618
         }

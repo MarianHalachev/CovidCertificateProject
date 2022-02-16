@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CovidCertificate.Data.Models.School>
+﻿@model IEnumerable<CovidCertificate.Data.Models.Certificate>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.IssueDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CodeByAdmin)
+                @Html.DisplayNameFor(model => model.ValidMonths)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayNameFor(model => model.IsValid)
             </th>
             <th></th>
         </tr>
@@ -28,13 +28,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.IssueDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CodeByAdmin)
+                @Html.DisplayFor(modelItem => item.ValidMonths)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @Html.DisplayFor(modelItem => item.IsValid)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

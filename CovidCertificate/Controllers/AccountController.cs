@@ -28,9 +28,7 @@ namespace CovidCertificate.Controllers
             var user = new User
             {
                 UserName = model.Username,
-                Email = model.Email,
-                
-                
+                Name=model.FirstName
             };
             var result = this.userManager.CreateAsync(user, model.Password).Result;
             if (result.Succeeded)

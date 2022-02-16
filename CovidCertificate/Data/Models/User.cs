@@ -10,9 +10,16 @@ namespace CovidCertificate.Data.Models
     {
         public User()
         {
-            this.Schools = new List<School>();
+            this.Certificates = new List<Certificate>();
         }
+        public string Name { get; set; }
 
-        public ICollection<School> Schools { get; set; }
+        public string MiddleName { get; set; }
+
+        public string LastName { get; set; }
+
+        public DateTime DateOfBirth { get; set; }
+        public ICollection<Certificate> Certificates { get; set; }
+        public School School { get; set; }
     }
 }
